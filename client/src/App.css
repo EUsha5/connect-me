@@ -2,6 +2,9 @@ img {
   width: 100%;
 }
 
+.nav-item {
+  align-self: center;
+}
 .landing {
   position: relative;
   background: url("./img/showcase.jpg") no-repeat;
