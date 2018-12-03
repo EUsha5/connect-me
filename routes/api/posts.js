@@ -50,10 +50,10 @@ router.post(
       return res.status(400).json(errors);
     }
     const newPost = new Post({
+      user: req.user.id,
       text: req.body.text,
-      name: req.body.name,
-      avatar: req.body.avatar,
-      user: req.user.id
+      name: req.user.name,
+      avatar: req.user.avatar
     });
     newPost.save().then(post => res.json(post));
   }
@@ -159,8 +159,8 @@ router.delete(
         .then(post => {
           const newComment = {
             text: req.body.text,
-            name: req.body.name,
-            avatar: req.body.avatar,
+            name: req.user.name,
+            avatar: req.user.avatar,
             user: req.user.id
           };
 
