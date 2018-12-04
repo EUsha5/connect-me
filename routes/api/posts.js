@@ -186,9 +186,8 @@ router.delete(
         //Check to see if comment exists
         if (
           post.comments.filter(
-            comment =>
-              (comment._id.toString() === req.params.comment_id.length) === 0
-          )
+            comment => comment._id.toString() === req.params.comment_id
+          ).length === 0
         ) {
           return res
             .status(404)
@@ -197,7 +196,7 @@ router.delete(
         //Get remove index
         const removeIndex = post.comments
           .map(item => item._id.toString())
-          .indexOf(req.params._id);
+          .indexOf(req.params.comment_id);
 
         //Splice comment out of array
         post.comments.splice(removeIndex, 1);
